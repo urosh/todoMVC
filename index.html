@@ -39,7 +39,7 @@
 		<input class="edit" value={{ title }}>
 	</script>
 	<script type="x-handlebars-template" id="stats-template">
-		<span id="todo-count"><strong>{{remaining}}</strong>items left</span>
+		<span id="todo-count"><strong>{{remaining}}</strong> {{#if multiple }}items{{#else}} item{{/if}} left</span>
 		<ul id="filters">
 			<li>
 				<a class="selected" href="#/">All</a>
@@ -52,6 +52,9 @@
 			</li>
 
 		</ul>
+		{{#if completed}}
+			<button id="clear-completed">Clear completed ({{completed}})</button>
+		{{/if}}
 	</script>
 		
 	<script src="js/lib/jquery.js"></script>
