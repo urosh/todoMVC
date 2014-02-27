@@ -8,7 +8,7 @@ var app = app || {};
 app.Todo = Backbone.Model.extend({
 
 	//Default attributes ensure that each todo created has 'title' and "completed" keys
-	defaults; {
+	defaults: {
 		title: '',
 		completed: false
 	},
@@ -16,7 +16,7 @@ app.Todo = Backbone.Model.extend({
 	//Toggle the 'completed' state of this todo item.
 	toggle: function(){
 		this.save({
-			completed: !this.get('completed');
-		})
+			completed: !this.get('completed')
+		});
 	}
 });

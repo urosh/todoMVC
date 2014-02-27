@@ -13,26 +13,19 @@ app.appView = Backbone.View.extend({
 	el: '#todoapp', 
 
 	
-	// Our template for the line of the statistics at the bottom of the app.
-	statsTemplate: Handlebars.compile($("#stats-template").html()),
-
-	// Delegated events for creating new items, and clearing completed ones.
-	events: {
-		'keypress #new-todo': 'createOnEnter',
-		'click #clear-completed': 'clearCompleted',
-		'click #toggle-all': 'toggleAllComplete'
-	},
-
 	// At initialization for the line of the statistics we bind to the
 	// revlevant events on the Todos collection, when items are added or changed.
 	initialize: function(){
-		
+		//this.allCheckbox = this.$("#toggle-all");
+		//this.allCheckbox = this.$("#toggle-all")[0];
+
 		this.allCheckbox = this.$("#toggle-all")[0];
 
 		console.log(this.allCheckbox);
 
 		this.$input = this.$("#new-todo");
-		
+		console.log(this.$input);
+
 		this.$footer = this.$("#footer");
 		this.$main = this.$("#main");
 
