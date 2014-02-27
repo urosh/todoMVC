@@ -18,7 +18,7 @@ app.appView = Backbone.View.extend({
 	initialize: function(){
 		//this.allCheckbox = this.$("#toggle-all");
 		//this.allCheckbox = this.$("#toggle-all")[0];
-
+		/*
 		this.allCheckbox = this.$("#toggle-all")[0];
 
 		console.log(this.allCheckbox);
@@ -35,16 +35,21 @@ app.appView = Backbone.View.extend({
 		this.listenTo(app.Todos, 'change:completed', this.filterOne);
 		this.listenTo(app.Todos, 'filter', this.filterAll );
 		this.listenTo(app.Todos, 'all', this.render);
-
+		console.log("now i fetch");
+		*/
+		console.log("Now i will try to fetch");
 		app.Todos.fetch();
+		console.log(app.Todos.length);
 
-	},
+	}
 
 	// Rendering tha app just means refreshing the statistics -- the rest 
 	// of the app doesn't change. 
+	/*
 	render: function(){
 		var completed = app.Todos.completed().length;
 		var remaining = app.Todos.remaining().length;
+		console.log(app.Todos.length);
 
 		if ( app.Todos.length ) {
 			this.$main.show();
@@ -121,6 +126,6 @@ app.appView = Backbone.View.extend({
 			});
 		});
 	}
-
+	*/
 	
 });

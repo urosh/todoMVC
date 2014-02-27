@@ -6,16 +6,14 @@ var app = app || {};
 // -----------------
 
 // The collection of todos is backed by *localStorage* instead of remote server.
-
 var TodoList = Backbone.Collection.extend({
 
 	//Reference to this collection's model
 	model: app.Todo,
 
 	//Save all of the todo items under the 'todos-backbone' namespace
-
 	localStorage: new Backbone.LocalStorage('todos-backbone'),
-
+	
 	// Filter donw the list of all todo items that are finished 
 	completed: function(){
 		return this.filter(function( todo ){
@@ -26,7 +24,7 @@ var TodoList = Backbone.Collection.extend({
 	// Filter down the list to only todo items that are still not finished.
 	remaining: function(){
 		// apply alowsus to define the context of this within our function scope
-		return this.without.apply(this, this.completed);
+		return this.without.apply(this, this.completed());
 	},
 
 	// We keep the Todo in sequential order, despite being saved by 
@@ -44,7 +42,7 @@ var TodoList = Backbone.Collection.extend({
 	comparator: function( todo ){
 		return todo.get('order');
 	},
-
+	
 
 })
 

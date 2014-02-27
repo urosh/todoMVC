@@ -29,16 +29,12 @@ app.appView = Backbone.View.extend({
 		
 		this.allCheckbox = this.$("#toggle-all")[0];
 
-		console.log(this.allCheckbox);
-
 		this.$input = this.$("#new-todo");
-		
 		this.$footer = this.$("#footer");
 		this.$main = this.$("#main");
 
 		this.listenTo(app.Todos, 'add', this.addOne);
 		this.listenTo(app.Todos, 'reset', this.addAll);
-
 		this.listenTo(app.Todos, 'change:completed', this.filterOne);
 		this.listenTo(app.Todos, 'filter', this.filterAll );
 		this.listenTo(app.Todos, 'all', this.render);
@@ -52,16 +48,16 @@ app.appView = Backbone.View.extend({
 	render: function(){
 		var completed = app.Todos.completed().length;
 		var remaining = app.Todos.remaining().length;
-
 		if ( app.Todos.length ) {
 			this.$main.show();
 			this.$footer.show();
 			//var theTemplate = Handlebars.compile(this.stats-template);
+			
 			this.$footer.html(this.statsTemplate({
 				completed: completed,
 				remaining: remaining
 			}));
-
+			
 			this.$('#filters li a')
 				.removeClass('selected')
 				.filter('[href="#/"' + ( app.TodoFilter || '' ) + '"]')
@@ -79,6 +75,7 @@ app.appView = Backbone.View.extend({
 	// Add a single todo item to the list by creating a view for it, 
 	// and appending its element to the '<ul>'
 	addOne: function( todo ){
+		var view = new app.TodoView({ model: todo});
 		$("#todo-list").append( view.render().el );
 	},
 
@@ -121,7 +118,7 @@ app.appView = Backbone.View.extend({
 
 	toggleAllComplete: function(){
 		var completed = this.allCheckbox.checked;
-
+		console.log(completed);
 		app.Todos.each(function( todo ){
 			todo.save({
 				'completed': completed
